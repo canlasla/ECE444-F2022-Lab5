@@ -79,3 +79,20 @@ def test_delete_message(client):
     rv = client.get('/delete/1')
     data = json.loads(rv.data)
     assert data["status"] == 1
+    
+def test_search_empty(client):
+    """Ensure the search returns empty when nothing in database"""
+    rv = client.get("/search?query=test")
+    assert b"" in rv.data
+
+def test_search_not_empty(client):
+    """Endure the search returns the correct result when databse is not empty"""
+    rv = login(client, app.config["USERNAME"], app.config["PASSWORD"])
+    rv = client.post(
+        "/add",
+        data=dict(title="Hello", text="test"),
+        follow_redirects=True,
+    )
+    rv = client.get("/search?query=Hello")
+    assert b"Hello" in rv.data
+    
