@@ -7,6 +7,7 @@ from project.app import app, db
 
 TEST_DB = "test.db"
 
+
 @pytest.fixture
 def client():
     BASE_DIR = Path(__file__).resolve().parent.parent
@@ -74,16 +75,19 @@ def test_messages(client):
     assert b"&lt;Hello&gt;" in rv.data
     assert b"<strong>HTML</strong> allowed here" in rv.data
 
+
 def test_delete_message(client):
     """Ensure the messages are being deleted"""
-    rv = client.get('/delete/1')
+    rv = client.get("/delete/1")
     data = json.loads(rv.data)
     assert data["status"] == 1
-    
+
+
 def test_search_empty(client):
     """Ensure the search returns empty when nothing in database"""
     rv = client.get("/search?query=test")
     assert b"" in rv.data
+
 
 def test_search_not_empty(client):
     """Endure the search returns the correct result when databse is not empty"""
@@ -95,7 +99,8 @@ def test_search_not_empty(client):
     )
     rv = client.get("/search?query=Hello")
     assert b"Hello" in rv.data
-    
+
+
 def test_delete_message(client):
     """Ensure the messages are being deleted"""
     rv = client.get("/delete/1")
