@@ -1,3 +1,6 @@
+# URL for group project test cases
+[link](https://github.com/ECE444-2022Fall/project-1-web-application-design-education-pathways-group-17-mergers/blob/9c268d5b5b1cf8a1dd416eb4195268b41895c41f/Education_Pathways/tests/test_app.py#L79-L95)
+
 # What are the pros and cons of TDD?
 
 ## Pros
@@ -10,3 +13,4 @@
  - A disadvantage of TDD is that it tends to be a slow process. This is a bad software developement approach if the team wants to create something quick and rapidly.
  - Usually the whole team has to create the unit tests, which maybe hindering in progess because creating good quality tests is difficult
  - Difficult to apply this when using it on projects that use or interact with legacy systems. 
+ 
